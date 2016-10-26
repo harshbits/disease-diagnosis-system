@@ -33,7 +33,16 @@ public class DiseaseController {
 	@ResponseBody
 	public ResponseEntity<?> retrieve(@RequestParam(required = true) String query) {
 		log.info(query);
-		String result = sparqlService.sparqlInferenceResponse(query);
+		String q = "prefix oio: <http://www.geneontology.org/formats/oboInOwl#> "
+				+ "prefix owl: <http://www.w3.org/2002/07/owl#> "
+				+ "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "SELECT ?baseClass ?baseLabel ?superClass ?superLabel "
+				+ "WHERE { ?baseClass rdfs:subClassOf ?superClass . "
+				+ "?baseClass rdfs:label ?baseLabel . "
+				+ "?superClass rdfs:label ?superLabel . "
+				+ "FILTER (!isBlank(?baseClass)) "
+				+ "FILTER (!isBlank(?superClass)) }";
+		String result = sparqlService.sparqlInferenceResponse(q);
 		ResponseEntity<String> response = new ResponseEntity<String>(result, HttpStatus.OK);
 		return response;
 	}

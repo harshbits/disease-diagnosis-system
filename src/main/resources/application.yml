@@ -17,5 +17,6 @@ spring:
 
 logging:
   level:
+    com.diseasediag: DEBUG
     org.springframework.security: DEBUG
     org.springframework.web: DEBUG
