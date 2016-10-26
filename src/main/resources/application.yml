@@ -1,0 +1,21 @@
+security:
+  user:
+    password: null
+  basic:
+    enabled: false
+    
+server:
+  port: 12122
+  
+spring:
+  profiles: local
+  
+  
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG

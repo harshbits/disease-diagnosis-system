@@ -1,0 +1,58 @@
+<html lang="en" >
+
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="./node_modules/angular-material/angular-material.css" />
+<script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+<script type="text/javascript"src="../node_modules/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="../node_modules/angular-aria/angular-aria.js"></script>
+<script type="text/javascript" src="../node_modules/angular-material/angular-messages.js"></script>
+<script type="text/javascript" src="../node_modules/angular-material/angular-material.js"></script>
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+
+</head>
+<body layout="column" ng-app="loginModule" ng-controller="LoginController as loginCtrl">
+
+	<md-toolbar style="background: #073473;">
+	<div class="md-toolbar-tools">
+
+		<h1
+			style="color: white; font-size: 26px; font-weight: 600; margin: 4px 20px; text-transform: uppercase; letter-spacing: 2.4px;"
+			class="cz-color-16777215" flex="">
+			 DISEASE DIAGNOSIS SYSTEM - LOGIN</h1>
+
+	</div>
+	</md-toolbar>
+
+	<md-content flex="" layout="column"> <md-content flex=""
+		layout="row">
+	<div flex="30"></div>
+	<div flex="" style="margin-top: 60px;">
+		<md-card> 
+		
+		<md-card-content>
+		<form name="loginForm" action="home" method="POST" ng-submit="submit()">
+			<md-input-container class="md-block"> <label>Email</label>
+			<input type="email" name="username" id="username" ng-model="email"/> </md-input-container>
+
+			<md-input-container class="md-block"> <label>Password</label>
+			<input type="password" name="password" id="password" ng-model="password"/> </md-input-container>
+			<input type="hidden" name="remember-me" id="remember-me" value="on" /> 
+			
+			<div layout-wrap="" layout="row">
+				<div layout-wrap="" align="left" flex="" style="margin-top: 15px;">
+					<span th:if="${param.error != null}" style="color: red">Invalid user name or password</span>
+				</div>
+				<div layout-wrap="" align="right">
+					<md-button type="submit" class="md-raised md-accent"
+						>LOGIN</md-button>
+				</div>
+			</div>
+		</form>
+		</md-card-content> </md-card>
+	</div>
+	<div flex="30"></div>
+	</md-content> </md-content>
+
+</body>
+</html>
