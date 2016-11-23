@@ -2,12 +2,13 @@ var index = angular.module('indexPage', [ 'ngMaterial', 'ngMessages']);
 
 
 
-index.controller('IndexController', ['$scope', 
-                                     function($scope, $timeout, $q){
-
+index.controller('IndexController', ['$scope','$filter', 
+                                     function($scope, $filter ,$timeout, $q){
+	
 	$scope.states        = loadAll();
 	$scope.querySearch   = querySearch;
 	$scope.searchTextChange   = searchTextChange;
+	$scope.symptomsSelected = [];
 
 	$scope.newState = newState;
 
@@ -31,10 +32,34 @@ index.controller('IndexController', ['$scope',
     	console.log('Text changed to ' + text);
     }
 
-    $scope.selectedItemChange = function (item) {
+    
+    
+    $scope.selectedItemChange = function(item) {
     	console.log('Item changed to ' + JSON.stringify(item));
-    }
+        if(item)
+        {
+          //check if item is already selected
+          if($filter('filter')($scope.symptomsSelected, function (symptom) {return symptom === item.display;})[0])
+            {
+        	  console.log('Item already selected. Will not add it again.');
+            }
+          else
+            {
+              //add id to object
+        	  $scope.symptomsSelected.push(item.display);    
+            }
+          // clear search field
+          $scope.searchText = '';
+          $scope.selectedItem = undefined;
+          
+          //somehow blur the autocomplete focus
+          //$mdAutocompleteCtrl.blur();
+          document.getElementById("symptomAc").blur();
+        }
+      }
 
+    
+    
     /**
      * Build `states` list of key/value pairs
      */
