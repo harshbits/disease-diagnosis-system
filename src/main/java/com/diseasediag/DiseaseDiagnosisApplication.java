@@ -7,7 +7,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
+import com.diseasediag.service.SparqlInfernceModel;
 import com.diseasediag.service.SparqlService;
+import com.diseasediag.service.impl.SparqlInfernceModelImpl;
 import com.diseasediag.service.impl.SparqlServiceImpl;
 
 @SpringBootApplication
@@ -24,4 +26,10 @@ public class DiseaseDiagnosisApplication {
 	public SparqlService sparqlService(){
 		return new SparqlServiceImpl();
 	}
+	
+	@Bean
+	public SparqlInfernceModel sparqlInfernceModel(){
+		return new SparqlInfernceModelImpl();
+	}
+	
 }

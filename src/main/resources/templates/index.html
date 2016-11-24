@@ -11,11 +11,13 @@ Disease Diagnosis System
   	<meta name="keywords" content="Disease, Diagnosis, Disease Diagnosis"/>
 
 <link rel="stylesheet" th:href="@{/node_modules/angular-material/angular-material.min.css}" />
+<link rel="stylesheet" th:href="@{/node_modules/angular-material-table/md-data-table.css}" />
 <script type="text/javascript" th:src="@{/node_modules/angular/angular.min.js}"></script>
 <script type="text/javascript" th:src="@{/node_modules/angular-animate/angular-animate.min.js}"></script>
 <script type="text/javascript" th:src="@{/node_modules/angular-aria/angular-aria.min.js}"></script>
 <script type="text/javascript" th:src="@{/node_modules/angular-material/angular-messages.min.js}"></script>
 <script type="text/javascript" th:src="@{/node_modules/angular-material/angular-material.min.js}"></script>
+<script type="text/javascript" th:src="@{/node_modules/angular-material-table/md-data-table.js}"></script>
 <script type="text/javascript" th:src="@{/js/index.js}"></script>
 
 </head>
@@ -24,9 +26,6 @@ Disease Diagnosis System
 	<md-toolbar style="background: #073473;">
 	<div class="md-toolbar-tools" >
 		<div layout-wrap>
-		<!-- <a class="" href="/home#/images" style="height: 40px;">		
-			<img src="assets/images/logo.png" alt="Copart" width="110" />				
-		</a> -->
 		</div>
 		<h1 style="color: white; font-size: 26px; font-weight: 600; margin: 4px 20px;
 		 text-transform: uppercase; letter-spacing: 2.4px;" class="cz-color-16777215" flex>
@@ -38,9 +37,35 @@ Disease Diagnosis System
 	<md-content flex="" layout="row" class="md-padding">
 	<div flex="" layout="column" ng-cloak>
 	<md-content class="md-padding">
-    <p ng-repeat="symptom in symptomsSelected">{{symptom}} 
-    	 <md-button class="md-raised md-accent" ng-click="ctrl.contactsSelectedRemove(contact)">Remove</md-button>
-	</p>
+	
+	 <md-table-container flex>
+			<table md-table >
+				<thead md-head>
+					<tr md-row class="border_bottom">
+						<th md-column><span><h3>SYMPTOM</h3></span></th>
+						<th md-column><span><h3>REMOVE</h3></span></th>
+					</tr>
+				</thead>
+				<tbody md-body>
+					<tr md-row md-select="document" auto-select="options.autoSelect"
+						 ng-repeat="symptom in symptomsSelected">
+						<td md-cell>{{symptom}}</td>
+						<td md-cell>
+							<md-button class="md-accent md-raised"
+							ng-click="symptomsSelectedRemove(symptom)"> REMOVE </md-button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+	</md-table-container>
+	<br></br>
+	<md-divider></md-divider>
+	
+    <br></br>
+	<div align="right">
+   	<md-button class="md-primary md-raised"
+	ng-click="getDisease()"> SUBMIT </md-button>
+	</div>
     <form ng-submit="$event.preventDefault()">
 	      <p>Select Symptom:</p>
 	      <md-autocomplete id="symptomAc"
@@ -60,10 +85,12 @@ Disease Diagnosis System
 	        </md-not-found>
 	      </md-autocomplete>
     </form>
-
+    
+    
   	</md-content>
 	</div>
-	<div flex="20"></div>
+	<div flex="20">
+	</div>
 	<div flex="" style="margin-top: 60px;">
 	
 	</div>

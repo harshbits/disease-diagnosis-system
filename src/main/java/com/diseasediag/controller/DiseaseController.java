@@ -1,5 +1,7 @@
 package com.diseasediag.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,22 @@ public class DiseaseController {
 				+ "?superClass rdfs:label ?superLabel . "
 				+ "FILTER (!isBlank(?baseClass)) "
 				+ "FILTER (!isBlank(?superClass)) }";
-		String result = sparqlService.sparqlInferenceResponse(q);
+		
+		String q1 = "PREFIX db:<http://www.geneontology.org/formats/oboInOwl#> "
+				+ "PREFIX target:<http://www.w3.org/2002/07/owl#> "
+				+ "select DISTINCT ?o where { "
+				+ "<http://purl.obolibrary.org/obo/DOID_162> ?p1 ?o "
+				+ "}";
+		String result = sparqlService.sparqlInferenceResponse(q1);
+		ResponseEntity<String> response = new ResponseEntity<String>(result, HttpStatus.OK);
+		return response;
+	}
+	
+	@RequestMapping(value = "/query1", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<?> getDisease(@RequestParam(required = true) List<String> symptoms) {
+		
+		String result = sparqlService.getDisease(symptoms);
 		ResponseEntity<String> response = new ResponseEntity<String>(result, HttpStatus.OK);
 		return response;
 	}

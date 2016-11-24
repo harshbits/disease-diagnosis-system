@@ -1,4 +1,4 @@
-var index = angular.module('indexPage', [ 'ngMaterial', 'ngMessages']);
+var index = angular.module('indexPage', [ 'ngMaterial', 'ngMessages', 'md.data.table']);
 
 
 
@@ -9,8 +9,17 @@ index.controller('IndexController', ['$scope','$filter',
 	$scope.querySearch   = querySearch;
 	$scope.searchTextChange   = searchTextChange;
 	$scope.symptomsSelected = [];
-
 	$scope.newState = newState;
+	$scope.options = {
+			rowSelection : true,
+			multiSelect : true,
+			autoSelect : true,
+			decapitate : false,
+			largeEditDialog : false,
+			boundaryLinks : false,
+			limitSelect : true,
+			pageSelect : true
+		};
 
     function newState(state) {
       alert("Sorry! You'll need to create a Constitution for " + state + " first!");
@@ -31,7 +40,6 @@ index.controller('IndexController', ['$scope','$filter',
     function searchTextChange(text) {
     	console.log('Text changed to ' + text);
     }
-
     
     
     $scope.selectedItemChange = function(item) {
@@ -56,9 +64,13 @@ index.controller('IndexController', ['$scope','$filter',
           //$mdAutocompleteCtrl.blur();
           document.getElementById("symptomAc").blur();
         }
-      }
-
+      };
     
+    $scope.symptomsSelectedRemove = function(symptom){
+    	var index = $scope.symptomsSelected.indexOf(symptom);
+    	$scope.symptomsSelected.splice(index, 1);   
+    	
+    };
     
     /**
      * Build `states` list of key/value pairs
