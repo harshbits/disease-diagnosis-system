@@ -2,8 +2,22 @@ var index = angular.module('indexPage', [ 'ngMaterial', 'ngMessages', 'md.data.t
 
 
 
-index.controller('IndexController', ['$scope','$filter', 
-                                     function($scope, $filter ,$timeout, $q){
+
+index.factory('diseaseRetrieve', function($http) {
+	return {
+		getRetrievedData : function(symptoms) {
+			return $http.get('disease/', {
+				transformRequest : angular.identity,
+				params : {
+					symptoms : symptoms,
+				}
+			});
+		}
+	}
+});
+
+index.controller('IndexController', ['$scope','$filter', 'diseaseRetrieve',
+                                     function($scope, $filter, diseaseRetrieve,$timeout, $q){
 	
 	$scope.states        = loadAll();
 	$scope.querySearch   = querySearch;
@@ -20,6 +34,9 @@ index.controller('IndexController', ['$scope','$filter',
 			limitSelect : true,
 			pageSelect : true
 		};
+	
+	
+	
 
     function newState(state) {
       alert("Sorry! You'll need to create a Constitution for " + state + " first!");
@@ -82,7 +99,10 @@ index.controller('IndexController', ['$scope','$filter',
     		Foot swelling or leg swelling, Headaches, Heart palpitations, Hip pain, Knee pain, Low back pain,\
     		Nasal congestion, Nausea or vomiting, Neck pain, Numbness or tingling in hands,\
     		Pelvic pain: Female, Pelvic pain: Male, Shortness of breath, Shoulder pain, Sore throat,\
-    		Urinary problems, Vision problems, Wheezing';
+    		Urinary problems, Vision problems, Wheezing,\
+    		Fast Heart Beats, Slow Heart Beats, Normal Heart Beats, High Body Temperature, Low Body Temperature,\
+    		Normal Body Temperature, Chest Pain, Forehead Pain, Headache Pain, Muscles Pain, Running Nose,\
+    		Shortness of Breath, Fever, Vomiting and Nausea, Watery Eyes';
    
 
       return allStates.split(/, +/g).map( function (state) {
@@ -106,7 +126,16 @@ index.controller('IndexController', ['$scope','$filter',
     };
     
     $scope.submit = function(){
-    	console.log($scope.selectedItem);
+    	
+    	var promise = diseaseRetrieve.getRetrievedData($scope.symptomsSelected);
+		promise.then(
+				function(response) {
+				console.log(response);
+				$scope.disease = response.data.disesae;
+				},
+				function(response) {
+		
+			});
     }
 		
 }]);

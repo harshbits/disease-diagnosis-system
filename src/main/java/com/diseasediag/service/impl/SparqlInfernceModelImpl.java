@@ -22,8 +22,8 @@ public class SparqlInfernceModelImpl implements SparqlInfernceModel{
 	@Override
 	public InfModel getInferenceModel() {
 		try{
-			Model defaultModel = ModelFactory.createDefaultModel();
-			OntModel ont = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, defaultModel);
+//			Model defaultModel = ModelFactory.createDefaultModel();
+			OntModel ont = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
 			try {
 				File file = new ClassPathResource("/ontology/doid.owl").getFile();
 				ont.read(new FileInputStream(file), null, "RDF/XML");
@@ -31,7 +31,6 @@ public class SparqlInfernceModelImpl implements SparqlInfernceModel{
 				e.printStackTrace();
 			}
 			
-
 			Reasoner reasoner = ReasonerRegistry.getOWLMicroReasoner();
 			reasoner = reasoner.bindSchema(ont);
 
@@ -44,6 +43,30 @@ public class SparqlInfernceModelImpl implements SparqlInfernceModel{
 			return null;
 		}
 		
+	}
+
+	@Override
+	public InfModel getDiseaseInferenceModel() {
+		try {
+			OntModel ont = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
+			File file = new ClassPathResource("/ontology/SmartHospital.owl").getFile();
+			ont.read(new FileInputStream(file), null, "RDF/XML");
+
+			Reasoner reasoner = ReasonerRegistry.getOWLMicroReasoner();
+			reasoner = reasoner.bindSchema(ont);
+
+			Dataset dataset = TDBFactory.createDataset();
+			Model model = dataset.getDefaultModel();
+
+			InfModel infModel = ModelFactory.createInfModel(reasoner, model);
+
+			return infModel;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 }

@@ -7,4 +7,6 @@ import org.springframework.stereotype.Service;
 public interface SparqlInfernceModel {
 
 	public InfModel getInferenceModel();
+	
+	public InfModel getDiseaseInferenceModel();
 }

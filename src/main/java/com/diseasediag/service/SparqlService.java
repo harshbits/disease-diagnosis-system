@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.diseasediag.bo.DiseaseInfoResponse;
+import com.diseasediag.bo.DiseaseResponse;
+
 @Service
 public interface SparqlService {
-	public String sparqlInferenceResponse(String query);
+	public DiseaseInfoResponse sparqlInferenceResponse(String query);
 	
-	public String getDisease(List<String> symptoms);
+	public DiseaseResponse getDisease(List<String> symptoms);
 }

@@ -1,0 +1,1032 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY projectOnt_AI "http://www.semanticweb.org/heet/ontologies/2015/3/projectOnt_AI#" >
+    <!ENTITY projectOnt_AI2 "http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#" >
+    <!ENTITY uni "http://www.semanticweb.org/heet/ontologies/2015/3/university_final#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/heet/ontologies/2015/3/university_final#"
+     xml:base="http://www.semanticweb.org/heet/ontologies/2015/3/university_final"
+     xmlns:projectOnt_AI="http://www.semanticweb.org/heet/ontologies/2015/3/projectOnt_AI#"
+     xmlns:uni="http://www.semanticweb.org/heet/ontologies/2015/3/university_final#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:projectOnt_AI2="http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#ContainsArea -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;ContainsArea"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#ContainsCity -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;ContainsCity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#ContainsHospital -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;ContainsHospital"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#ContainsState -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;ContainsState"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#containLocationDetails -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;containLocationDetails">
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;hasLocationDetails"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#containsDisease -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;containsDisease">
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;hasSymptom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#containsDiseaseSpeciality -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;containsDiseaseSpeciality">
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;hasSpecialityHospital"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#containsRisk -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;containsRisk"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#containsSpeciality -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;containsSpeciality"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasHospitalSpeciality -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasHospitalSpeciality">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Disease"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;HospitalSpeciality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasLatitude -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasLatitude"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasLocation">
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;ContainsHospital"/>
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Hospital"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasLocationDetails -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasLocationDetails">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasLongitude -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasLongitude"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasRisk -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasRisk">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Disease"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;Risk"/>
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;containsRisk"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasSpeciality -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasSpeciality">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Hospital"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;HospitalSpeciality"/>
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;containsSpeciality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasSpecialityHospital -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasSpecialityHospital">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Disease"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;Hospital"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hasSymptom -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;hasSymptom">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Disease"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;Symptom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#isPartOfCity -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;isPartOfCity">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Area"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;City"/>
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;ContainsArea"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#isPartOfCountry -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;isPartOfCountry">
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;ContainsState"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;Country"/>
+        <rdfs:domain rdf:resource="&projectOnt_AI2;State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#isPartOfState -->
+
+    <owl:ObjectProperty rdf:about="&projectOnt_AI2;isPartOfState">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;City"/>
+        <owl:inverseOf rdf:resource="&projectOnt_AI2;ContainsCity"/>
+        <rdfs:range rdf:resource="&projectOnt_AI2;State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#areaName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;areaName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Area"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#cityName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;cityName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;City"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#countryName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;countryName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Country"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#diseaseName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;diseaseName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Disease"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#diseaseType -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;diseaseType">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Disease"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hospitalCode -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;hospitalCode">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Hospital"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hospitalName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;hospitalName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Hospital"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#hospitalType -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;hospitalType">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;HospitalSpeciality"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#latitudeValue -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;latitudeValue">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#locationArea -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;locationArea">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#locationCode -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;locationCode">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#locationName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;locationName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#longitudeValue -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;longitudeValue">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#riskName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;riskName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Risk"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#stateName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;stateName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;State"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#symptomName -->
+
+    <owl:DatatypeProperty rdf:about="&projectOnt_AI2;symptomName">
+        <rdfs:domain rdf:resource="&projectOnt_AI2;Symptom"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Area -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Area">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;isPartOfCity"/>
+                <owl:onClass rdf:resource="&projectOnt_AI2;City"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#BodyTemperature -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;BodyTemperature">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Symptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#City -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;City">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;ContainsArea"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;Area"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;isPartOfState"/>
+                <owl:onClass rdf:resource="&projectOnt_AI2;State"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Country -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Country">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;ContainsState"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;State"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Disease -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Disease">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;hasSpecialityHospital"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;Hospital"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;hasRisk"/>
+                <owl:onClass rdf:resource="&projectOnt_AI2;Risk"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;hasSymptom"/>
+                <owl:onClass rdf:resource="&projectOnt_AI2;Symptom"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#GeneralDisease -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;GeneralDisease">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Disease"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#GeneralHospital -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;GeneralHospital">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Hospital"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#HeartBeat -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;HeartBeat">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Symptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#HeartHospital -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;HeartHospital">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Hospital"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Hospital -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Hospital">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;hasSpeciality"/>
+                <owl:allValuesFrom rdf:resource="&projectOnt_AI2;HospitalSpeciality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;hasLocation"/>
+                <owl:onClass rdf:resource="&projectOnt_AI2;Location"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#HospitalSpeciality -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;HospitalSpeciality">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;containsSpeciality"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;Hospital"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Location -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Location">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;ContainsHospital"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;Hospital"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Others -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Others">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Symptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Pain -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Pain">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Symptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Risk -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Risk">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;containsRisk"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;Disease"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#SeriousDisease -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;SeriousDisease">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Disease"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#State -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;State">
+        <rdfs:subClassOf rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;isPartOfCountry"/>
+                <owl:onClass rdf:resource="&projectOnt_AI2;Country"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;ContainsCity"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;City"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Symptom -->
+
+    <owl:Class rdf:about="&projectOnt_AI2;Symptom">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&projectOnt_AI2;containsDisease"/>
+                <owl:someValuesFrom rdf:resource="&projectOnt_AI2;Disease"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Asthma -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Asthma">
+        <rdf:type rdf:resource="&projectOnt_AI2;GeneralDisease"/>
+        <rdfs:label>Asthma</rdfs:label>
+        <projectOnt_AI2:diseaseName>Asthma</projectOnt_AI2:diseaseName>
+        <projectOnt_AI2:diseaseType>General</projectOnt_AI2:diseaseType>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;FastHeartBeat"/>
+        <projectOnt_AI2:hasHospitalSpeciality rdf:resource="&projectOnt_AI2;HeartHospital"/>
+        <projectOnt_AI2:hasRisk rdf:resource="&projectOnt_AI2;LowRisk"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;ShortnessOfBreath"/>
+        <projectOnt_AI2:hasSpecialityHospital rdf:resource="&projectOnt_AI2;The_Heart_Hospital_Baylor_Plano"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Baylor_Medical_Center_at_Frisco -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Baylor_Medical_Center_at_Frisco">
+        <rdf:type rdf:resource="&projectOnt_AI2;GeneralHospital"/>
+        <rdfs:label>Baylor Medical Center at Frisco</rdfs:label>
+        <projectOnt_AI2:hospitalCode>BFC</projectOnt_AI2:hospitalCode>
+        <projectOnt_AI2:hospitalName>Baylor Medical Center at Frisco</projectOnt_AI2:hospitalName>
+        <projectOnt_AI2:hasLocation rdf:resource="&projectOnt_AI2;Frisco"/>
+        <projectOnt_AI2:hasSpeciality rdf:resource="&projectOnt_AI2;GeneralHospital"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#ChathamCourts -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;ChathamCourts">
+        <rdf:type rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:label>Chatham Courts</rdfs:label>
+        <projectOnt_AI2:locationName>Chatham Courts</projectOnt_AI2:locationName>
+        <projectOnt_AI2:locationArea>Plano</projectOnt_AI2:locationArea>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#ChestPain -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;ChestPain">
+        <rdf:type rdf:resource="&projectOnt_AI2;Pain"/>
+        <rdfs:label>Chest Pain</rdfs:label>
+        <projectOnt_AI2:symptomName>Chest Pain</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Cold -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Cold">
+        <rdf:type rdf:resource="&projectOnt_AI2;GeneralDisease"/>
+        <rdfs:label>Cold</rdfs:label>
+        <projectOnt_AI2:diseaseType>General</projectOnt_AI2:diseaseType>
+        <projectOnt_AI2:diseaseName>Cold</projectOnt_AI2:diseaseName>
+        <projectOnt_AI2:hasSpecialityHospital rdf:resource="&projectOnt_AI2;Baylor_Medical_Center_at_Frisco"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;Forehead"/>
+        <projectOnt_AI2:hasHospitalSpeciality rdf:resource="&projectOnt_AI2;GeneralHospital"/>
+        <projectOnt_AI2:hasRisk rdf:resource="&projectOnt_AI2;LowRisk"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;Muscles"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;RunningNose"/>
+        <projectOnt_AI2:hasSpecialityHospital rdf:resource="&projectOnt_AI2;The_Medical_Center_of_Plano"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;WateryEyes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Dallas -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Dallas">
+        <rdf:type rdf:resource="&projectOnt_AI2;City"/>
+        <rdfs:label>Dallas</rdfs:label>
+        <projectOnt_AI2:cityName>Dallas</projectOnt_AI2:cityName>
+        <projectOnt_AI2:isPartOfState rdf:resource="&projectOnt_AI2;Texas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Eye_Hospital -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Eye_Hospital">
+        <rdf:type rdf:resource="&projectOnt_AI2;HospitalSpeciality"/>
+        <rdfs:label>Eye Hospital</rdfs:label>
+        <projectOnt_AI2:hospitalType>Eye Hospital</projectOnt_AI2:hospitalType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#FastHeartBeat -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;FastHeartBeat">
+        <rdf:type rdf:resource="&projectOnt_AI2;HeartBeat"/>
+        <rdfs:label>Fast Heart Beats</rdfs:label>
+        <projectOnt_AI2:symptomName>Fast Heart Beats</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Fever -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Fever">
+        <rdf:type rdf:resource="&projectOnt_AI2;Others"/>
+        <rdfs:label>Fever</rdfs:label>
+        <projectOnt_AI2:symptomName>Fever</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Forehead -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Forehead">
+        <rdf:type rdf:resource="&projectOnt_AI2;Pain"/>
+        <rdfs:label>Forehead Pain</rdfs:label>
+        <projectOnt_AI2:symptomName>Forehead Pain</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Frisco -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Frisco">
+        <rdf:type rdf:resource="&projectOnt_AI2;Area"/>
+        <rdfs:label>Frisco</rdfs:label>
+        <projectOnt_AI2:areaName>Frisco</projectOnt_AI2:areaName>
+        <projectOnt_AI2:isPartOfCity rdf:resource="&projectOnt_AI2;Dallas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#GeneralHospital -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;GeneralHospital">
+        <rdf:type rdf:resource="&projectOnt_AI2;HospitalSpeciality"/>
+        <projectOnt_AI2:hospitalType>General Hospital</projectOnt_AI2:hospitalType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Headache -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Headache">
+        <rdf:type rdf:resource="&projectOnt_AI2;Pain"/>
+        <rdfs:label>Headache Pain</rdfs:label>
+        <projectOnt_AI2:symptomName>Headache Pain</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#HeartAttack -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;HeartAttack">
+        <rdf:type rdf:resource="&projectOnt_AI2;SeriousDisease"/>
+        <rdfs:label>Heart Attack</rdfs:label>
+        <projectOnt_AI2:diseaseName>Heart Attack</projectOnt_AI2:diseaseName>
+        <projectOnt_AI2:diseaseType>Serious</projectOnt_AI2:diseaseType>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;ChestPain"/>
+        <projectOnt_AI2:hasHospitalSpeciality rdf:resource="&projectOnt_AI2;HeartHospital"/>
+        <projectOnt_AI2:hasRisk rdf:resource="&projectOnt_AI2;HighRisk"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;LowHeartBeat"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;LowTemperature"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;ShortnessOfBreath"/>
+        <projectOnt_AI2:hasSpecialityHospital rdf:resource="&projectOnt_AI2;The_Heart_Hospital_Baylor_Plano"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#HeartHospital -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;HeartHospital">
+        <rdf:type rdf:resource="&projectOnt_AI2;HospitalSpeciality"/>
+        <projectOnt_AI2:hospitalType>Heart Hospital</projectOnt_AI2:hospitalType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#HighRisk -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;HighRisk">
+        <rdf:type rdf:resource="&projectOnt_AI2;Risk"/>
+        <rdfs:label>High Risk</rdfs:label>
+        <projectOnt_AI2:riskName>High Risk</projectOnt_AI2:riskName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#HighTemperature -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;HighTemperature">
+        <rdf:type rdf:resource="&projectOnt_AI2;BodyTemperature"/>
+        <rdfs:label>High Body Temperature</rdfs:label>
+        <projectOnt_AI2:symptomName>High Body Temperature</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#LowHeartBeat -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;LowHeartBeat">
+        <rdf:type rdf:resource="&projectOnt_AI2;HeartBeat"/>
+        <rdfs:label>Slow Heart Beats</rdfs:label>
+        <projectOnt_AI2:symptomName>Slow Heart Beats</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#LowRisk -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;LowRisk">
+        <rdf:type rdf:resource="&projectOnt_AI2;Risk"/>
+        <rdfs:label>Low Risk</rdfs:label>
+        <projectOnt_AI2:riskName>Low Risk</projectOnt_AI2:riskName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#LowTemperature -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;LowTemperature">
+        <rdf:type rdf:resource="&projectOnt_AI2;BodyTemperature"/>
+        <rdfs:label>Low Body Temperature</rdfs:label>
+        <projectOnt_AI2:symptomName>Low Body Temperature</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Malaria -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Malaria">
+        <rdf:type rdf:resource="&projectOnt_AI2;GeneralDisease"/>
+        <rdfs:label>Malaria</rdfs:label>
+        <projectOnt_AI2:diseaseName>Malaria</projectOnt_AI2:diseaseName>
+        <projectOnt_AI2:diseaseType>General</projectOnt_AI2:diseaseType>
+        <projectOnt_AI2:hasSpecialityHospital rdf:resource="&projectOnt_AI2;Baylor_Medical_Center_at_Frisco"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;Fever"/>
+        <projectOnt_AI2:hasHospitalSpeciality rdf:resource="&projectOnt_AI2;GeneralHospital"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;Headache"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;HighTemperature"/>
+        <projectOnt_AI2:hasRisk rdf:resource="&projectOnt_AI2;LowRisk"/>
+        <projectOnt_AI2:hasSpecialityHospital rdf:resource="&projectOnt_AI2;The_Medical_Center_of_Plano"/>
+        <projectOnt_AI2:hasSymptom rdf:resource="&projectOnt_AI2;Vomiting"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Muscles -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Muscles">
+        <rdf:type rdf:resource="&projectOnt_AI2;Pain"/>
+        <rdfs:label>Muscles  Pain</rdfs:label>
+        <projectOnt_AI2:symptomName>Muscles  Pain</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#NormalHeartBeat -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;NormalHeartBeat">
+        <rdf:type rdf:resource="&projectOnt_AI2;HeartBeat"/>
+        <rdfs:label>Normal Heart Beats</rdfs:label>
+        <projectOnt_AI2:symptomName>Normal Heart Beats</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Normal_Body_Temperature -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Normal_Body_Temperature">
+        <rdf:type rdf:resource="&projectOnt_AI2;BodyTemperature"/>
+        <rdfs:label>Normal Body Temperature</rdfs:label>
+        <projectOnt_AI2:stateName>Normal Body Temperature</projectOnt_AI2:stateName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Plano -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Plano">
+        <rdf:type rdf:resource="&projectOnt_AI2;Area"/>
+        <rdfs:label>Plano</rdfs:label>
+        <projectOnt_AI2:areaName>Plano</projectOnt_AI2:areaName>
+        <projectOnt_AI2:isPartOfCity rdf:resource="&projectOnt_AI2;Dallas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#RunningNose -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;RunningNose">
+        <rdf:type rdf:resource="&projectOnt_AI2;Others"/>
+        <rdfs:label>Running Nose</rdfs:label>
+        <projectOnt_AI2:symptomName>Running Nose</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#ShortnessOfBreath -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;ShortnessOfBreath">
+        <rdf:type rdf:resource="&projectOnt_AI2;Others"/>
+        <rdfs:label>Shortness of Breath</rdfs:label>
+        <projectOnt_AI2:symptomName>Shortness of Breath</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Texas -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Texas">
+        <rdf:type rdf:resource="&projectOnt_AI2;State"/>
+        <rdfs:label>Texas</rdfs:label>
+        <projectOnt_AI2:stateName>Texas</projectOnt_AI2:stateName>
+        <projectOnt_AI2:isPartOfCountry rdf:resource="&projectOnt_AI2;UnitedStates"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#TheUTD -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;TheUTD">
+        <rdf:type rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:label>The University of Texas at Dallas</rdfs:label>
+        <projectOnt_AI2:locationArea>Plano</projectOnt_AI2:locationArea>
+        <projectOnt_AI2:locationName>The University of Texas at Dallas</projectOnt_AI2:locationName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#The_Heart_Hospital_Baylor_Plano -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;The_Heart_Hospital_Baylor_Plano">
+        <rdf:type rdf:resource="&projectOnt_AI2;HeartHospital"/>
+        <rdfs:label>The Heart Hospital Baylor Plano</rdfs:label>
+        <projectOnt_AI2:hospitalCode>HHB</projectOnt_AI2:hospitalCode>
+        <projectOnt_AI2:hospitalName>The Heart Hospital Baylor Plano</projectOnt_AI2:hospitalName>
+        <projectOnt_AI2:hasSpeciality rdf:resource="&projectOnt_AI2;HeartHospital"/>
+        <projectOnt_AI2:hasLocation rdf:resource="&projectOnt_AI2;Plano"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#The_Medical_Center_of_Plano -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;The_Medical_Center_of_Plano">
+        <rdf:type rdf:resource="&projectOnt_AI2;GeneralHospital"/>
+        <rdfs:label>The Medical Center of Plano</rdfs:label>
+        <projectOnt_AI2:hospitalName>The Medical Center of Plano</projectOnt_AI2:hospitalName>
+        <projectOnt_AI2:hospitalCode>MCP</projectOnt_AI2:hospitalCode>
+        <projectOnt_AI2:hasSpeciality rdf:resource="&projectOnt_AI2;GeneralHospital"/>
+        <projectOnt_AI2:hasLocation rdf:resource="&projectOnt_AI2;Plano"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#UnitedStates -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;UnitedStates">
+        <rdf:type rdf:resource="&projectOnt_AI2;Country"/>
+        <rdfs:label>United States of America</rdfs:label>
+        <projectOnt_AI2:countryName>United States of America</projectOnt_AI2:countryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#Vomiting -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;Vomiting">
+        <rdf:type rdf:resource="&projectOnt_AI2;Others"/>
+        <rdfs:label>Vomiting and Nausea</rdfs:label>
+        <projectOnt_AI2:symptomName>Vomiting and Nausea</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#WateryEyes -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;WateryEyes">
+        <rdf:type rdf:resource="&projectOnt_AI2;Others"/>
+        <rdfs:label>Watery Eyes</rdfs:label>
+        <projectOnt_AI2:symptomName>Watery Eyes</projectOnt_AI2:symptomName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harsh/ontologies/2015/3/projectOnt_AI#W_Spring_Creek_Pkwy_+_Dallas_Northway_Tollway -->
+
+    <owl:NamedIndividual rdf:about="&projectOnt_AI2;W_Spring_Creek_Pkwy_+_Dallas_Northway_Tollway">
+        <rdf:type rdf:resource="&projectOnt_AI2;Location"/>
+        <rdfs:label>W Spring Creek Pkwy + Dallas Northway Tollway</rdfs:label>
+        <projectOnt_AI2:locationArea>Frisco</projectOnt_AI2:locationArea>
+        <projectOnt_AI2:locationName>W Spring Creek Pkwy Dallas Northway Tollway</projectOnt_AI2:locationName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&projectOnt_AI2;HeartHospital">
+        <rdfs:label>Heart Hospital</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="&projectOnt_AI2;GeneralHospital">
+        <rdfs:label>General Hospital</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

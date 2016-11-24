@@ -64,7 +64,7 @@ Disease Diagnosis System
     <br></br>
 	<div align="right">
    	<md-button class="md-primary md-raised"
-	ng-click="getDisease()"> SUBMIT </md-button>
+	ng-click="submit()"> SUBMIT </md-button>
 	</div>
     <form ng-submit="$event.preventDefault()">
 	      <p>Select Symptom:</p>
@@ -86,6 +86,7 @@ Disease Diagnosis System
 	      </md-autocomplete>
     </form>
     
+    <p>{{disease}}</p>
     
   	</md-content>
 	</div>
