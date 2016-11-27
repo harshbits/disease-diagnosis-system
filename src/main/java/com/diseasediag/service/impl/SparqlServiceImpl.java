@@ -36,6 +36,8 @@ public class SparqlServiceImpl implements SparqlService {
 		Set<String> linksMaps = new LinkedHashSet<>();
 		String definition = "Not Available";
 		String DOID = "Not Available";
+		boolean getDOID = false;
+		boolean getDefinition = false;
 		
 		String queryString = "PREFIX db:<http://www.geneontology.org/formats/oboInOwl#> "
 				+ "PREFIX target:<http://www.w3.org/2002/07/owl#> "
@@ -58,6 +60,7 @@ public class SparqlServiceImpl implements SparqlService {
 				+ "{ "
 				+ "?x target:annotatedSource ?s . "
 				+ "?x target:annotatedTarget ?o4 . "
+				+ "?x db:hasDbXref ?o5 . "
 				+ "} "
 				+ "}";
 		
@@ -68,13 +71,40 @@ public class SparqlServiceImpl implements SparqlService {
 			while (rs.hasNext()) {
 				QuerySolution soln = rs.nextSolution();
 				try{
-					DOID = soln.getLiteral("o1").toString();
-					synonymsMaps.add(soln.getLiteral("o2").toString());
-					xRefsMaps.add(soln.getLiteral("o3").toString());
-					definition = soln.getLiteral("o4").toString();
-//					System.out.println("Literal: "+soln.getLiteral("o2").toString());
+					if(!getDOID){
+						DOID = soln.getLiteral("o1").toString();	
+					}
 				}catch(Exception e){
-					log.error("Literal Select Error: "+e.getMessage());
+					log.error("o1 Literal Select Error: "+e.getMessage());
+				}
+				
+				try{
+					synonymsMaps.add(soln.getLiteral("o2").toString());
+				}catch(Exception e){
+					log.error("o2 Literal Select Error: "+e.getMessage());
+				}
+				
+				try{
+					xRefsMaps.add(soln.getLiteral("o3").toString());
+				}catch(Exception e){
+					log.error("o2 Literal Select Error: "+e.getMessage());
+				}
+				
+				try{
+					if(!getDefinition){
+						definition = soln.getLiteral("o4").toString();
+					}
+				}catch(Exception e){
+					log.error("o4 Literal Select Error: "+e.getMessage());
+				}
+				try{
+					String link = soln.getLiteral("o5").toString();
+					if(link.contains("url:")){
+						link = link.replace("url:", "");
+					}
+					linksMaps.add(link);
+				}catch(Exception e){
+					log.error("o5 Literal Select Error: "+e.getMessage());
 				}
 			}
 		}catch(Exception e){

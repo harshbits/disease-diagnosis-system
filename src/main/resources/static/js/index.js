@@ -166,7 +166,7 @@ index.controller('IndexController', ['$scope','$filter', '$mdDialog', 'diseaseRe
 				function(response) {
 					console.log(response);
 					$scope.name = response.data.name;
-					$scope.DOID = response.data.DOID;
+					$scope.doid = response.data.doid;
 					$scope.definition = response.data.definition;
 					$scope.links = response.data.links;
 					$scope.Xrefs = response.data.Xrefs;

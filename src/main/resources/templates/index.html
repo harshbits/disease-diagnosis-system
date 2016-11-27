@@ -148,7 +148,7 @@ Disease Diagnosis System
 						<tbody md-body>
 							<tr md-row>
 								<td md-cell align="center"><label name="Status"><b>DOID</b></label></td>
-								<td md-cell align="center">{{DOID}}</td>
+								<td md-cell align="center">{{doid}}</td>
 
 							</tr>
 							<tr md-row>
@@ -156,24 +156,39 @@ Disease Diagnosis System
 								<td md-cell align="center">{{name}}</td>
 							</tr>
 							<tr md-row>
-								<td md-cell align="center"><label name="SellerName"><b>Definition</b></label></td>
+								<td md-cell align="center"><label name="Definition"><b>Definition</b></label></td>
 								<td md-cell align="center">{{definition}}</td>
 								
 							</tr>
 							<tr md-row>
-								<td md-cell align="center"><label name="isKey"><b>External Links</b></label></td>
-								<td md-cell align="center">{{links}}</td>
-								
+								<td md-cell align="center"><label name="Links"><b>External Links</b></label></td>
+								<td md-cell align="center">
+								<md-list>
+								  <md-list-item ng-repeat="link in links">
+								    <span><a target="_blank" ng-href="{{link}}">{{link}}</a></span>
+								  </md-list-item>
+								</md-list>
+								</td>
 							</tr>
 							<tr md-row>
-								<td md-cell align="center"><label name="isKey"><b>Xrefs</b></label></td>
-								<td md-cell align="center">{{Xrefs}}</td>
-								
+								<td md-cell align="center"><label name="Xrefs"><b>Xrefs</b></label></td>
+								<td md-cell align="center">
+								<md-list>
+								  <md-list-item ng-repeat="xref in Xrefs">
+								    <span>{{xref}}</span>
+								  </md-list-item>
+								</md-list>
+								</td>
 							</tr>
 							<tr md-row>
-							<td md-cell align="center"><label name="LotSuffix"><b>Synonyms</b>
-										</label></td>
-							<td md-cell align="center">{{synonyms}}</td>
+								<td md-cell align="center"><label name="Synonyms"><b>Synonyms</b></label></td>
+								<td md-cell align="center">
+								<md-list>
+									  <md-list-item ng-repeat="synonym in synonyms">
+									    <span>{{synonym}}</span>
+									  </md-list-item>
+								</md-list>
+								</td>
 							</tr>
 							<tr md-row>
 								<td md-cell align="center"><label name="Status"><b>Image</b></label></td>
