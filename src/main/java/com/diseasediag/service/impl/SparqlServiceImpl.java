@@ -1,6 +1,9 @@
 package com.diseasediag.service.impl;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -8,7 +11,6 @@ import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
-import org.apache.jena.rdf.model.InfModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,57 +29,83 @@ public class SparqlServiceImpl implements SparqlService {
 	SparqlInfernceModel model;
 	
 //	@Override
-	public DiseaseInfoResponse sparqlInferenceResponse(String queryString) {
-
-		InfModel infModel = model.getInferenceModel();
-		if(model == null){
-			return null;
-		}
-		String disease = null;
-		String hospital = null;
-		String hospitalCode = null;
-		StringBuilder res = new StringBuilder();
+	public DiseaseInfoResponse sparqlInferenceResponse(String disease) throws Exception{
+		DiseaseInfoResponse response = new DiseaseInfoResponse();
+		Set<String> synonymsMaps = new LinkedHashSet<>();
+		Set<String> xRefsMaps = new LinkedHashSet<>();
+		Set<String> linksMaps = new LinkedHashSet<>();
+		String definition = "Not Available";
+		String DOID = "Not Available";
+		
+		String queryString = "PREFIX db:<http://www.geneontology.org/formats/oboInOwl#> "
+				+ "PREFIX target:<http://www.w3.org/2002/07/owl#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+				+ "select DISTINCT * where { "
+				+ "?s ?label \""+disease.toLowerCase()+"\" . " 
+//				+ "?s ?label \"cancer\" . "
+				+ "{ ?s db:id ?o1 . "
+				+ "} "
+				+ "UNION "
+				+ "{ "
+				+ "?s db:hasRelatedSynonym ?o2 . "
+				+ "} UNION "
+				+ "{ "
+				+ "?s db:hasExactSynonym ?o2 . "
+				+ "?s db:hasDbXref ?o3 . "
+				+ "} "
+				+ "UNION "
+				+ "{ "
+				+ "?x target:annotatedSource ?s . "
+				+ "?x target:annotatedTarget ?o4 . "
+				+ "} "
+				+ "}";
+		
 		Query query = QueryFactory.create(queryString);
-		QueryExecution exec = QueryExecutionFactory.create(query, infModel);
+		QueryExecution exec = QueryExecutionFactory.create(query, model.getInferenceModel());
 		try {
-			System.out.println("here");
 			ResultSet rs = exec.execSelect();
 			while (rs.hasNext()) {
 				QuerySolution soln = rs.nextSolution();
-//				disease = soln.get("dn").toString();
-//				hospital = soln.get("hn").toString();
-//				hospitalCode = soln.get("hc").toString();
-				disease = soln.toString();
-//				soln.get
-				System.out.println("\n\n"+ soln.toString());
-//				break;
+				try{
+					DOID = soln.getLiteral("o1").toString();
+					synonymsMaps.add(soln.getLiteral("o2").toString());
+					xRefsMaps.add(soln.getLiteral("o3").toString());
+					definition = soln.getLiteral("o4").toString();
+//					System.out.println("Literal: "+soln.getLiteral("o2").toString());
+				}catch(Exception e){
+					log.error("Literal Select Error: "+e.getMessage());
+				}
 			}
-		} finally {
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		finally {
 			exec.close();
 		}
 
-		res.append(disease);
-//		res.append("::");
-//		res.append(hospital);
-//		res.append("::");
-//		res.append(hospitalCode);
-//		return res.toString();
-		DiseaseInfoResponse response = new DiseaseInfoResponse();
-		response.setDefinition("Definition");
+		response.setDOID(DOID);
+		response.setXrefs(new ArrayList<>(xRefsMaps));
+		response.setSynonyms(new ArrayList<>(synonymsMaps));
+		response.setLinks(new ArrayList<>(linksMaps));
+		response.setName(disease);
+		response.setDefinition(definition);
 		
 		return response;
 	}
 
 	@Override
-	public DiseaseResponse getDisease(List<String> symptoms) {
+	public DiseaseResponse getDisease(List<String> symptoms) throws Exception{
 		
 		StringBuilder sb = new StringBuilder();
 		StringBuilder sb1 = new StringBuilder();
+		
 
 		for (int i = 0; i < symptoms.size(); i++) {
+			System.out.println("\n\n"+symptoms.get(i));
 			sb.append("?s" + i + " smf:symptomName " + "?o" + i
 					+ " FILTER (regex(?o" + i + ", '"
-					+ symptoms.get(i) + "'))");
+					+ symptoms.get(i).toString() + "'))");
 			sb.append("\n");
 		}
 
@@ -115,38 +143,29 @@ public class SparqlServiceImpl implements SparqlService {
 				+ " ?h smf:hospitalName ?hn."
 				+ " ?h smf:hospitalCode ?hc " + " }";
 		
-		String disease ="";
+		String disease ="Not Found";
+		String risk = "Not Found";
+		String hospital = "Not Found";
 		
-		StringBuilder res = new StringBuilder();
 		Query query = QueryFactory.create(qry);
 		QueryExecution exec = QueryExecutionFactory.create(query, model.getDiseaseInferenceModel());
 		try {
-			System.out.println("here");
 			ResultSet rs = exec.execSelect();
 			while (rs.hasNext()) {
 				QuerySolution soln = rs.nextSolution();
-				disease = soln.get("dn").toString();
-//				hospital = soln.get("hn").toString();
-//				hospitalCode = soln.get("hc").toString();
-//				disease = soln.toString();
-//				soln.get
 				System.out.println("\n\n"+ soln.toString());
-//				break;
+				disease = soln.get("dn").toString();
+				hospital = soln.get("hn").toString();
+				risk = soln.get("rn").toString();
 			}
 		} finally {
 			exec.close();
 		}
 
-		res.append(disease);
-//		res.append("::");
-//		res.append(hospital);
-//		res.append("::");
-//		res.append(hospitalCode);
-//		return res.toString();
-		System.out.println(disease);
-		System.out.println("\n\n\n"+ res.toString());
 		DiseaseResponse d = new DiseaseResponse();
 		d.setDisesae(disease);
+		d.setHospital(hospital);
+		d.setRisk(risk);
 		return d;
 	}
 

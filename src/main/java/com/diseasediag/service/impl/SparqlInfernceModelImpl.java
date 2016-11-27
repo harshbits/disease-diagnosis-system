@@ -22,7 +22,6 @@ public class SparqlInfernceModelImpl implements SparqlInfernceModel{
 	@Override
 	public InfModel getInferenceModel() {
 		try{
-//			Model defaultModel = ModelFactory.createDefaultModel();
 			OntModel ont = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
 			try {
 				File file = new ClassPathResource("/ontology/doid.owl").getFile();

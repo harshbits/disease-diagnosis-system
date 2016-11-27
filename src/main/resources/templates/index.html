@@ -35,8 +35,8 @@ Disease Diagnosis System
 	
 	<md-content flex="" layout="column"> 
 	<md-content flex="" layout="row" class="md-padding">
-	<div flex="" layout="column" ng-cloak>
-	<md-content class="md-padding">
+	<div flex="" layout="column" ng-cloak style="border: 3px solid grey">
+	<md-content class="md-padding" layout="column">
 	
 	 <md-table-container flex>
 			<table md-table >
@@ -85,21 +85,114 @@ Disease Diagnosis System
 	        </md-not-found>
 	      </md-autocomplete>
     </form>
-    
-    <p>{{disease}}</p>
+    <md-content flex>
+    </md-content>
+    <br></br>
+    <br></br>
+    <br></br>
+    OUTPUT
+    <br></br>
+    <md-content flex>
+    <md-table-container flex>
+			<table md-table>
+						<tbody md-body>
+							<tr md-row>
+								<td md-cell align="center"><label name="Status"><b>Disease</b></label></td>
+								<td md-cell align="center">{{disease}}</td>
+								<td md-cell align="center"><md-button class="md-accent md-raised"
+									ng-click="search(disease)" ng-show="disease"> Get Info </md-button>
+								</td>
+
+							</tr>
+							<tr md-row>
+								<td md-cell align="center"><label name="Color"><b>Risk</b></label></td>
+								<td md-cell align="center">{{risk}}</td>
+								<td md-cell align="center">
+								</td>
+							</tr>
+							<tr md-row>
+								<td md-cell align="center"><label name="Color"><b>Suggested Hospital</b></label></td>
+								<td md-cell align="center">{{hospital}}</td>
+								<td md-cell align="center"><md-button class="md-accent md-raised"
+									ng-href="{{hospitalUrl}}" target="_blank" ng-show="hospital"> Get Location </md-button>
+								</td>
+							</tr>
+						</tbody>
+			</table>
+		</md-table-container>
+    </md-content>
     
   	</md-content>
 	</div>
-	<div flex="20">
+	<div flex="5">
 	</div>
-	<div flex="" style="margin-top: 60px;">
-	
+	<div flex style=" border: 3px solid grey">
+	<md-content class="md-padding" layout="column">
+	<div layout-wrap layout="row" >
+		<md-input-container class="md-block" flex
+					style="margin-bottom:0px; margin-top: 0px;"> 
+					<label><span style="text-transform: capitalize;">Search Disease:</span> 
+					</label> 
+					<input type="text"  required name="disease" ng-model="diseaseSearch"  />
+				</md-input-container>
+				<div layout-wrap>
+				 <md-button type="submit" class="md-raised md-primary" ng-click="search(diseaseSearch)">SEARCH</md-button>
+			</div>
 	</div>
-	<div flex="10"></div>
+	<div>
+	<label>Disease Details: </label>
+	</div>
+	<div>
+		<md-table-container flex>
+					<table md-table>
+						<tbody md-body>
+							<tr md-row>
+								<td md-cell align="center"><label name="Status"><b>DOID</b></label></td>
+								<td md-cell align="center">{{DOID}}</td>
+
+							</tr>
+							<tr md-row>
+								<td md-cell align="center"><label name="Color"><b>Name</b></label></td>
+								<td md-cell align="center">{{name}}</td>
+							</tr>
+							<tr md-row>
+								<td md-cell align="center"><label name="SellerName"><b>Definition</b></label></td>
+								<td md-cell align="center">{{definition}}</td>
+								
+							</tr>
+							<tr md-row>
+								<td md-cell align="center"><label name="isKey"><b>External Links</b></label></td>
+								<td md-cell align="center">{{links}}</td>
+								
+							</tr>
+							<tr md-row>
+								<td md-cell align="center"><label name="isKey"><b>Xrefs</b></label></td>
+								<td md-cell align="center">{{Xrefs}}</td>
+								
+							</tr>
+							<tr md-row>
+							<td md-cell align="center"><label name="LotSuffix"><b>Synonyms</b>
+										</label></td>
+							<td md-cell align="center">{{synonyms}}</td>
+							</tr>
+							<tr md-row>
+								<td md-cell align="center"><label name="Status"><b>Image</b></label></td>
+							</tr>
+							<tr md-row>
+								
+								<td md-cell align="center" colspan="2">
+								<img height="260" width="300" ng-src="./images/Tumor_Mesothelioma2_legend.jpg"></img>
+								</td>
+								
+							</tr>
+						</tbody>
+					</table>
+	</md-table-container>
+	</div>
+	</md-content> 
+	</div>
 	</md-content> 
 	</md-content>
-	
-	<footer style="color: #a6a6a6; margin-bottom: 40px;" align="center"> Copyright © 2016 Harsh B & Varsha K. All Rights Reserved</footer>
-
+	<footer style="color: #a6a6a6; margin-bottom: 20px;" align="center"> Copyright © 2016 Harsh B & Varsha K. All Rights Reserved</footer>
 </body>
 </html> 

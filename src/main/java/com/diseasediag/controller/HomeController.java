@@ -42,4 +42,7 @@ public class HomeController {
 		e.printStackTrace();
 		return "index";
 	}
+	
+	
+	
 }

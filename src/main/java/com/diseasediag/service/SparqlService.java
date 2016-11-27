@@ -9,7 +9,7 @@ import com.diseasediag.bo.DiseaseResponse;
 
 @Service
 public interface SparqlService {
-	public DiseaseInfoResponse sparqlInferenceResponse(String query);
+	public DiseaseInfoResponse sparqlInferenceResponse(String query) throws Exception;
 	
-	public DiseaseResponse getDisease(List<String> symptoms);
+	public DiseaseResponse getDisease(List<String> symptoms) throws Exception;
 }

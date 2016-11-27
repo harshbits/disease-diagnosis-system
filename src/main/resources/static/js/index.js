@@ -1,6 +1,11 @@
 var index = angular.module('indexPage', [ 'ngMaterial', 'ngMessages', 'md.data.table']);
 
 
+index.run(function($templateCache, $http) {
+    $http.get('source_files/retrieve-progress-bar.html').then(function(response) {
+        $templateCache.put('retrieve-progress-bar', response.data);
+    });
+});
 
 
 index.factory('diseaseRetrieve', function($http) {
@@ -16,8 +21,22 @@ index.factory('diseaseRetrieve', function($http) {
 	}
 });
 
-index.controller('IndexController', ['$scope','$filter', 'diseaseRetrieve',
-                                     function($scope, $filter, diseaseRetrieve,$timeout, $q){
+index.factory('diseaseInfoRetrieve', function($http) {
+	return {
+		getRetrievedData : function(diseaseName) {
+			return $http.get('diseaseinfo/', {
+				transformRequest : angular.identity,
+				params : {
+					disease : diseaseName,
+				}
+			});
+		}
+	}
+});
+
+
+index.controller('IndexController', ['$scope','$filter', '$mdDialog', 'diseaseRetrieve', 'diseaseInfoRetrieve', '$templateCache',
+                                     function($scope, $filter, $mdDialog, diseaseRetrieve, diseaseInfoRetrieve, $templateCache, $timeout, $q){
 	
 	$scope.states        = loadAll();
 	$scope.querySearch   = querySearch;
@@ -34,8 +53,6 @@ index.controller('IndexController', ['$scope','$filter', 'diseaseRetrieve',
 			limitSelect : true,
 			pageSelect : true
 		};
-	
-	
 	
 
     function newState(state) {
@@ -94,16 +111,7 @@ index.controller('IndexController', ['$scope','$filter', 'diseaseRetrieve',
      */
     function loadAll() {
     
-    	var allStates = 'Abdominal pain, Blood in stool, Chest pain, Constipation, Cough, Diarrhea,\
-    		Difficulty swallowing, Dizziness, Eye discomfort and redness, Foot pain or ankle pain,\
-    		Foot swelling or leg swelling, Headaches, Heart palpitations, Hip pain, Knee pain, Low back pain,\
-    		Nasal congestion, Nausea or vomiting, Neck pain, Numbness or tingling in hands,\
-    		Pelvic pain: Female, Pelvic pain: Male, Shortness of breath, Shoulder pain, Sore throat,\
-    		Urinary problems, Vision problems, Wheezing,\
-    		Fast Heart Beats, Slow Heart Beats, Normal Heart Beats, High Body Temperature, Low Body Temperature,\
-    		Normal Body Temperature, Chest Pain, Forehead Pain, Headache Pain, Muscles Pain, Running Nose,\
-    		Shortness of Breath, Fever, Vomiting and Nausea, Watery Eyes';
-   
+    	var allStates = 'Chest Pain, Cough, Diarrhea, Dizziness, Eye discomfort and redness, Fast Heart Beats, Fever, Forehead Pain, Headache Pain, Headaches, Heart palpitations, High Body Temperature, Low Body Temperature, Muscles Pain, Neck pain, Normal Body Temperature, Normal Heart Beats, Numbness or tingling in hands, Running Nose, Shortness of Breath, Shoulder pain, Slow Heart Beats, Sore throat, Urinary problems, Vision problems, Vomiting and Nausea, Watery Eyes, Wheezing';
 
       return allStates.split(/, +/g).map( function (state) {
         return {
@@ -128,14 +136,85 @@ index.controller('IndexController', ['$scope','$filter', 'diseaseRetrieve',
     $scope.submit = function(){
     	
     	var promise = diseaseRetrieve.getRetrievedData($scope.symptomsSelected);
+    	$scope.showRetrieveProgress(true, "", false);
 		promise.then(
 				function(response) {
 				console.log(response);
 				$scope.disease = response.data.disesae;
+				$scope.hospital = response.data.hospital;
+				$scope.hospitalUrl = 'http://maps.google.com/?q='+$scope.hospital;
+				$scope.risk = response.data.risk;
+				$scope.showRetrieveProgress(
+						false,
+						"Retrieved all data.",
+						false);
 				},
 				function(response) {
+					console.log(response);
+					$scope.showRetrieveProgress(
+							false,
+							"Retrieved all data.",
+							false);
 		
 			});
     }
+    
+ $scope.search = function(disease){
+    	var promise = diseaseInfoRetrieve.getRetrievedData(disease);
+    	$scope.showRetrieveProgress(true, "", false);
+		promise.then(
+				function(response) {
+					console.log(response);
+					$scope.name = response.data.name;
+					$scope.DOID = response.data.DOID;
+					$scope.definition = response.data.definition;
+					$scope.links = response.data.links;
+					$scope.Xrefs = response.data.Xrefs;
+					$scope.synonyms = response.data.synonyms;
+					
+					$scope.showRetrieveProgress(
+							false,
+							"Retrieved all data.",
+							false);
+				},
+				function(response) {
+					console.log(response);
+					$scope
+					.showRetrieveProgress(
+							false,
+							"Retrieved all data.",
+							false);
+		
+			});
+    };
+    
+    $scope.showRetrieveProgress = function(value,
+			retrieveMessage, isError) {
+		if ((value == true)
+				|| (value == false && isError == true)) {
+			$mdDialog
+					.show({
+						clickOutsideToClose : false,
+						preserveScope : true,
+						template : $templateCache.get('retrieve-progress-bar'),
+						locals : {
+							value : value,
+							retrieveMessage : retrieveMessage
+						},
+						controller : function DialogController(
+								$scope, $mdDialog,
+								value, retrieveMessage) {
+
+							$scope.value = value;
+							$scope.retrieveMessage = retrieveMessage;
+							$scope.cancel = function() {
+								$mdDialog.cancel();
+							};
+						}
+					});
+		} else {
+			$mdDialog.cancel();
+		}
+	};
 		
 }]);
