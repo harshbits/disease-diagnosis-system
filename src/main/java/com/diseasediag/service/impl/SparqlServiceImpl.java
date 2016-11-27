@@ -38,6 +38,7 @@ public class SparqlServiceImpl implements SparqlService {
 		String DOID = "Not Available";
 		boolean getDOID = false;
 		boolean getDefinition = false;
+		int xrefcount = 0;
 		
 		String queryString = "PREFIX db:<http://www.geneontology.org/formats/oboInOwl#> "
 				+ "PREFIX target:<http://www.w3.org/2002/07/owl#> "
@@ -85,7 +86,9 @@ public class SparqlServiceImpl implements SparqlService {
 				}
 				
 				try{
-					xRefsMaps.add(soln.getLiteral("o3").toString());
+					if(xrefcount < 6){
+						xRefsMaps.add(soln.getLiteral("o3").toString());	
+					}
 				}catch(Exception e){
 					log.error("o2 Literal Select Error: "+e.getMessage());
 				}
@@ -101,8 +104,8 @@ public class SparqlServiceImpl implements SparqlService {
 					String link = soln.getLiteral("o5").toString();
 					if(link.contains("url:")){
 						link = link.replace("url:", "");
+						linksMaps.add(link);
 					}
-					linksMaps.add(link);
 				}catch(Exception e){
 					log.error("o5 Literal Select Error: "+e.getMessage());
 				}

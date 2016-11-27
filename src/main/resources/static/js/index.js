@@ -169,7 +169,7 @@ index.controller('IndexController', ['$scope','$filter', '$mdDialog', 'diseaseRe
 					$scope.doid = response.data.doid;
 					$scope.definition = response.data.definition;
 					$scope.links = response.data.links;
-					$scope.Xrefs = response.data.Xrefs;
+					$scope.Xrefs = response.data.xrefs;
 					$scope.synonyms = response.data.synonyms;
 					
 					$scope.showRetrieveProgress(
