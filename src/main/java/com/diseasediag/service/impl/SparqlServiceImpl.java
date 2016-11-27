@@ -86,8 +86,9 @@ public class SparqlServiceImpl implements SparqlService {
 				}
 				
 				try{
-					if(xrefcount < 6){
+					if(xrefcount < 15){
 						xRefsMaps.add(soln.getLiteral("o3").toString());	
+						xrefcount = xrefcount + 3;
 					}
 				}catch(Exception e){
 					log.error("o2 Literal Select Error: "+e.getMessage());
