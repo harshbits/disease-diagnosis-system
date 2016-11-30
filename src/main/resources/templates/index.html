@@ -100,7 +100,7 @@ Disease Diagnosis System
 								<td md-cell align="center"><label name="Status"><b>Disease</b></label></td>
 								<td md-cell align="center">{{disease}}</td>
 								<td md-cell align="center"><md-button class="md-accent md-raised"
-									ng-click="search(disease)" ng-show="disease"> Get Info </md-button>
+									ng-click="search(disease)" ng-hide="(disease == 'Not Found') || (disease  === undefined)"> Get Info </md-button>
 								</td>
 
 							</tr>
@@ -113,8 +113,9 @@ Disease Diagnosis System
 							<tr md-row>
 								<td md-cell align="center"><label name="Color"><b>Suggested Hospital</b></label></td>
 								<td md-cell align="center">{{hospital}}</td>
-								<td md-cell align="center"><md-button class="md-accent md-raised"
-									ng-href="{{hospitalUrl}}" target="_blank" ng-show="hospital"> Get Location </md-button>
+								<td md-cell align="center"><md-button class="md-accent md-raised" 
+								ng-hide="(hospital == 'Not Found') || (hospital  === undefined)"
+									ng-href="{{hospitalUrl}}" target="_blank"> Get Location </md-button>
 								</td>
 							</tr>
 						</tbody>
@@ -196,7 +197,7 @@ Disease Diagnosis System
 							<tr md-row>
 								
 								<td md-cell align="center" colspan="2">
-								<img height="260" width="300" ng-src="./images/Tumor_Mesothelioma2_legend.jpg"></img>
+								<!-- <img height="260" width="300" ng-src="./images/Tumor_Mesothelioma2_legend.jpg"></img> -->
 								</td>
 								
 							</tr>

@@ -197,7 +197,11 @@ public class SparqlServiceImpl implements SparqlService {
 		}
 
 		DiseaseResponse d = new DiseaseResponse();
-		d.setDisesae(disease);
+		if(disease.equalsIgnoreCase("cold")){
+			d.setDisesae("Common Cold");
+		}else{
+			d.setDisesae(disease);
+		}
 		d.setHospital(hospital);
 		d.setRisk(risk);
 		return d;
