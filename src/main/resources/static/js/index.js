@@ -111,7 +111,7 @@ index.controller('IndexController', ['$scope','$filter', '$mdDialog', 'diseaseRe
      */
     function loadAll() {
     
-    	var allStates = 'Chest Pain, Cough, Diarrhea, Dizziness, Eye discomfort and redness, Fast Heart Beats, Fever, Forehead Pain, Headache Pain, Headaches, Heart palpitations, High Body Temperature, Low Body Temperature, Muscles Pain, Neck pain, Normal Body Temperature, Normal Heart Beats, Numbness or tingling in hands, Running Nose, Shortness of Breath, Shoulder pain, Slow Heart Beats, Sore throat, Urinary problems, Vision problems, Vomiting and Nausea, Watery Eyes, Wheezing';
+    	var allStates = 'Chest Pain, Cough, Diarrhea, Dizziness, Eye discomfort and redness, Fast Heart Beats, Fever, Forehead Pain, Headache Pain, Headache, Heart palpitations, High Body Temperature, Low Body Temperature, Muscles Pain, Neck pain, Normal Body Temperature, Normal Heart Beats, Numbness or tingling in hands, Running Nose, Shortness of Breath, Shoulder pain, Slow Heart Beats, Sore throat, Vision problems, Vomiting and Nausea, Watery Eyes, Wheezing';
 
       return allStates.split(/, +/g).map( function (state) {
         return {

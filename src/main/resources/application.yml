@@ -8,8 +8,6 @@ server:
   port: 12122
   
 spring:
-  profiles: local
-  
   
   thymeleaf:
     cache: false
